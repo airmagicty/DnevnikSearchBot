@@ -6,15 +6,25 @@ from CONFIG import *
 bot = Bot(API_TOKEN)
 dp = Dispatcher(bot)
 
-alfavit = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+def create_menu():
+    return 0
 
-@dp.message_handler()
-async def echo(message: types.Message):
+@dp.message_handler(commands=['img'])
+async def echo_img(message: types.Message):
+    await bot.send_photo(chat_id=message.from_user.id, photo=IMG_URL)
+
+@dp.message_handler(commands=['locate'])
+async def echo_locate(message: types.Message):
+    await bot.send_location(message.from_user.id)
+
+@dp.message_handler(commands=['sticker'])
+async def echo_sticker(message: types.Message):
     await bot.send_sticker(message.from_user.id, sticker='CAACAgIAAxkBAAEHKgZjubMISJ0NWmCOascFkOue0MngegACcAEAAs6YzRbDY97SastfMC0E')
 
 @dp.message_handler(commands=['start','restart'])
 async def echo_start(message: types.Message):
     await message.answer(text=message.text)
+    await message.delete()
 
 @dp.message_handler(commands=['help'])
 async def echo_help(message: types.Message):
