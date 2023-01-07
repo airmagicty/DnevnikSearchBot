@@ -1,2 +1,2 @@
 # DnevnikSearchBot
-For Dnevnik SearchBot (py)
+For Dnevnik SearchBot (py) v0.1
