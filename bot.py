@@ -24,7 +24,7 @@ def test_imenu() -> InlineKeyboardMarkup:
     ikb2 = InlineKeyboardButton(text="Test2",
                                 url="https://google.com")
     ikb3 = InlineKeyboardButton(text="Test3",
-                                callback_data=call_back_return())
+                                callback_data="summon_test")
     return ikb.add(ikb1, ikb2).add(ikb3)
 
 async def on_bot_start(_):
